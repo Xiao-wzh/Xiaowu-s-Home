@@ -1,5 +1,11 @@
 # 个人作品集展示网站
 
+![微信图片_20250605140423_72](https://github.com/user-attachments/assets/724c0a71-41b4-4d54-8f1f-93bbffde80bd)
+![微信图片_20250605140423_74](https://github.com/user-attachments/assets/7cbb8082-448c-40c6-b207-6641738a926f)
+![微信图片_20250605140423_76](https://github.com/user-attachments/assets/0d4097c1-359e-410a-a745-aadc8782618e)
+![微信图片_20250605140423_78](https://github.com/user-attachments/assets/ecff9824-c6e9-4878-ac94-b1627e8dd6b2)
+
+
 ## 项目概述
 这是一个使用PHP作为后端，Vue.js作为前端的个人作品集展示网站。网站设计为一个现代化的Landing Page，展示个人专业技能和项目作品。
 
