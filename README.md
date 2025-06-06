@@ -1,126 +1,142 @@
-# 个人作品集展示网站
+# 个人作品集网站
 
-![微信图片_20250605140423_72](https://github.com/user-attachments/assets/724c0a71-41b4-4d54-8f1f-93bbffde80bd)
-![微信图片_20250605140423_74](https://github.com/user-attachments/assets/7cbb8082-448c-40c6-b207-6641738a926f)
-![微信图片_20250605140423_76](https://github.com/user-attachments/assets/0d4097c1-359e-410a-a745-aadc8782618e)
-![微信图片_20250605140423_78](https://github.com/user-attachments/assets/ecff9824-c6e9-4878-ac94-b1627e8dd6b2)
-
-
-## 项目概述
-这是一个使用PHP作为后端，Vue.js作为前端的个人作品集展示网站。网站设计为一个现代化的Landing Page，展示个人专业技能和项目作品。
+这是一个使用Vue.js构建的现代化个人作品集网站。网站采用响应式设计，支持多种设备访问，并具有优雅的动画效果和用户友好的界面。
 
 ## 功能特点
-- 响应式设计，适配各种设备尺寸
-- 动态导航菜单（Home, Project, About, Contact）
-- 个人简介和技能展示
-- 项目作品集展示
-- 联系表单功能
-- 动态数据渲染，内容可通过后端管理
 
-## 技术栈
-- 前端：Vue.js 3、HTML5、CSS3、JavaScript
-- 后端：PHP 8.0+
-- 数据存储：JSON文件（可扩展为MySQL数据库）
+- 响应式设计，适配各种屏幕尺寸
+- 现代化的UI设计和流畅的动画效果
+- 深色主题支持
+- 优化的性能和加载速度
+- SEO友好的结构
 
 ## 项目结构
+
 ```
-/
-├── backend/                # PHP后端
-│   ├── api/                # API接口
-│   ├── config/             # 配置文件
-│   └── data/               # 数据文件
-├── frontend/               # Vue前端
-│   ├── public/             # 静态资源
-│   └── src/                # Vue源代码
-└── index.php               # 入口文件
+project/
+├── src/
+│   ├── assets/
+│   │   ├── css/
+│   │   │   └── main.css      # 全局样式文件
+│   │   └── images/           # 图片资源
+│   ├── components/           # Vue组件
+│   │   ├── Header.vue       # 导航头部
+│   │   ├── Footer.vue       # 页面底部
+│   │   └── ...
+│   ├── views/               # 页面视图
+│   │   ├── Home.vue        # 首页
+│   │   ├── About.vue       # 关于页面
+│   │   ├── Projects.vue    # 项目展示
+│   │   └── Contact.vue     # 联系页面
+│   ├── App.vue             # 根组件
+│   └── main.js             # 应用入口
+├── index.html              # HTML入口文件
+└── README.md              # 项目文档
 ```
 
-## 安装与使用
-1. 克隆项目到本地或服务器
-2. 确保安装了PHP 8.0+和Node.js环境
-3. 前端设置：
-   ```
-   cd frontend
-   npm install
-   npm run build
-   ```
-4. 将构建后的前端文件部署到服务器
-5. 配置服务器指向index.php入口文件
+## 技术栈
 
-## API接口说明
-网站提供以下API接口获取动态数据：
+- Vue.js 3 - 渐进式JavaScript框架
+- Vue Router - 官方路由管理器
+- CSS变量 - 主题定制
+- Google Fonts (Inter) - 字体
+- 响应式设计 - 移动优先
 
-1. `/backend/api/profile.php` - 获取个人资料信息
-2. `/backend/api/projects.php` - 获取项目作品集信息
-3. `/backend/api/contact.php` - 处理联系表单提交
+## 开发指南
 
-## 如何修改内容
-网站内容可通过编辑 `/backend/data/` 目录下的JSON文件进行修改：
-- `profile.json` - 修改个人资料、技能和简介
-- `projects.json` - 修改项目作品集信息
-- `settings.json` - 修改网站基本设置（标题、SEO信息等）
+### 环境要求
 
-## 开发与调试
-- 前端开发模式：`cd frontend && npm run serve`
-- API测试：使用Postman或其他API测试工具访问后端接口
+- Node.js >= 14.0.0
+- npm >= 6.0.0
 
-## 开发环境设置
+### 安装依赖
 
-### 前端开发
+```bash
+npm install
+```
 
-1. 进入前端项目目录：
-   ```bash
-   cd frontend
-   ```
+### 开发服务器
 
-2. 安装依赖：
-   ```bash
-   npm install
-   ```
+```bash
+npm run dev
+```
 
-3. 启动开发服务器：
-   ```bash
-   npm run serve
-   ```
+### 构建生产版本
 
-### 后端开发
+```bash
+npm run build
+```
 
-1. 确保已安装 PHP 7.4 或更高版本
-2. 配置 Web 服务器（Apache/Nginx）指向项目根目录
+## 自定义主题
 
-## 构建部署
+网站使用CSS变量进行主题定制，主要变量定义在 `src/assets/css/main.css` 文件中：
 
-### 前端构建
+```css
+:root {
+  --primary: #64ffda;        # 主要强调色
+  --bg-main: #0a192f;       # 主背景色
+  --bg-secondary: #112240;   # 次要背景色
+  --text-primary: #e6f1ff;   # 主要文本色
+  --text-secondary: #8892b0; # 次要文本色
+}
+```
 
-1. 进入前端项目目录：
-   ```bash
-   cd frontend
-   ```
+## 页面说明
 
-2. 安装依赖（如果尚未安装）：
-   ```bash
-   npm install
-   ```
+### 首页 (Home.vue)
+- 个人简介展示
+- 技能概览
+- 最新项目预览
 
-3. 构建生产版本：
-   ```bash
-   npm run build
-   ```
+### 关于 (About.vue)
+- 详细个人介绍
+- 专业技能列表
+- 工作经历时间线
 
-4. 构建完成后，生产文件将位于 `public` 目录中，包括：
-   - JavaScript 文件（已压缩）
-   - CSS 文件（已压缩）
-   - 其他静态资源
+### 项目 (Projects.vue)
+- 项目展示网格
+- 项目详细信息
+- 技术栈标签
 
-### 部署说明
+### 联系 (Contact.vue)
+- 联系表单
+- 社交媒体链接
+- 联系信息
 
-1. 将后端文件部署到 Web 服务器
-2. 将前端构建产物（`public` 目录下的文件）部署到 Web 服务器的相应目录
-3. 配置 Web 服务器将前端路由请求指向 `index.html`
+## 性能优化
 
-## 注意事项
+- 使用 `preconnect` 预加载Google Fonts
+- 图片懒加载
+- CSS和JavaScript的代码分割
+- 响应式图片加载
 
-- 确保 Node.js 版本 >= 12.0.0
-- 确保 PHP 版本 >= 7.4
-- 开发时注意保持代码规范，遵循 ESLint 规则
-- 生产环境部署前请先执行构建命令 
+## 浏览器支持
+
+- Chrome (最新版本)
+- Firefox (最新版本)
+- Safari (最新版本)
+- Edge (最新版本)
+
+## 贡献指南
+
+1. Fork 项目
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启Pull Request
+
+## 许可证
+
+MIT License - 详见 LICENSE 文件
+
+## 联系方式
+
+如有任何问题或建议，请通过以下方式联系：
+
+- 电子邮件：[your.email@example.com]
+- GitHub：[Your GitHub Profile]
+- LinkedIn：[Your LinkedIn Profile]
+
+---
+
+© 2024 Your Name. All rights reserved. 
