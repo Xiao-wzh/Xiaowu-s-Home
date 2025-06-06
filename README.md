@@ -124,3 +124,178 @@
 - 确保 PHP 版本 >= 7.4
 - 开发时注意保持代码规范，遵循 ESLint 规则
 - 生产环境部署前请先执行构建命令 
+
+# 个人作品集后端项目
+
+这是一个基于Spring Boot和MyBatis的个人作品集后端项目。
+
+## 技术栈
+
+- Spring Boot 3.3.2
+- MyBatis/MyBatis-Plus
+- MySQL 8.0
+- JDK 17
+
+## 项目结构
+
+```
+src/main/java/com/portfolio/
+├── controller/        # REST API控制器
+├── service/           # 业务逻辑服务
+│   └── impl/          # 服务实现类
+├── mapper/            # 数据访问接口
+├── entity/            # 实体类
+├── config/            # 配置类
+└── PortfolioApplication.java  # 应用程序入口
+```
+
+## 功能模块
+
+### 个人简介 (Profile)
+
+- 获取个人简介信息
+- 更新个人简介信息
+
+### 项目作品 (Project)
+
+- 获取所有项目作品
+- 获取单个项目详情
+- 添加新项目
+- 更新项目信息
+- 删除项目
+
+### 设置 (Settings)
+
+- 获取网站设置
+- 更新网站设置
+
+## 数据库设计
+
+### profile表
+
+| 字段名       | 类型         | 描述         |
+|-------------|--------------|-------------|
+| id          | bigint       | 主键ID       |
+| name        | varchar(100) | 姓名         |
+| title       | varchar(100) | 职位标题      |
+| subtitle    | varchar(200) | 副标题        |
+| availability| varchar(50)  | 可用性状态     |
+| coffee_text | varchar(200) | 咖啡约见文本   |
+| skills      | text         | 技能列表      |
+| qualities   | text         | 个人品质      |
+| contact     | text         | 联系信息      |
+| social      | text         | 社交媒体链接   |
+
+### project表
+
+| 字段名         | 类型         | 描述         |
+|---------------|--------------|-------------|
+| id            | bigint       | 主键ID       |
+| title         | varchar(100) | 项目标题      |
+| description   | text         | 项目描述      |
+| technologies  | varchar(255) | 使用的技术    |
+| thumbnail_url | varchar(255) | 缩略图URL     |
+| demo_url      | varchar(255) | 演示URL      |
+| code_url      | varchar(255) | 代码仓库URL   |
+
+### settings表
+
+| 字段名       | 类型         | 描述         |
+|-------------|--------------|-------------|
+| id          | bigint       | 主键ID       |
+| theme       | varchar(50)  | 主题         |
+| language    | varchar(20)  | 语言         |
+| dark_mode   | tinyint(1)   | 暗黑模式      |
+| font_family | varchar(100) | 字体         |
+| font_size   | int          | 字体大小      |
+
+## 如何运行
+
+### 环境要求
+
+- JDK 17或更高版本
+- Maven 3.6或更高版本
+- MySQL 8.0或更高版本
+
+### 步骤
+
+1. 克隆项目到本地
+
+```bash
+git clone https://github.com/yourusername/portfolio-backend.git
+cd portfolio-backend
+```
+
+2. 配置数据库
+
+创建MySQL数据库并修改`application.yml`中的数据库连接信息。
+
+3. 构建项目
+
+```bash
+mvn clean package
+```
+
+4. 运行项目
+
+```bash
+java -jar target/portfolio-backend-1.0.0.jar
+```
+
+5. 访问API
+
+```
+http://localhost:8080/api/profile/1
+```
+
+## API文档
+
+### 个人简介API
+
+#### 获取个人简介
+
+- **URL**: `/api/profile/{id}`
+- **方法**: GET
+- **路径参数**: 
+  - `id`: 简介ID
+- **响应**: Profile对象
+
+#### 更新个人简介
+
+- **URL**: `/api/profile`
+- **方法**: POST
+- **请求体**: Profile对象
+- **响应**: 无
+
+### 项目作品API
+
+#### 获取所有项目
+
+- **URL**: `/api/projects`
+- **方法**: GET
+- **响应**: Project对象数组
+
+#### 获取项目详情
+
+- **URL**: `/api/projects/{id}`
+- **方法**: GET
+- **路径参数**: 
+  - `id`: 项目ID
+- **响应**: Project对象
+
+### 设置API
+
+#### 获取设置
+
+- **URL**: `/api/settings/{id}`
+- **方法**: GET
+- **路径参数**: 
+  - `id`: 设置ID
+- **响应**: Settings对象
+
+#### 更新设置
+
+- **URL**: `/api/settings`
+- **方法**: POST
+- **请求体**: Settings对象
+- **响应**: 无 

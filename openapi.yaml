@@ -1,0 +1,381 @@
+openapi: 3.0.3
+info:
+  title: 个人作品集后端API
+  description: 这是一个基于Spring Boot和MyBatis的个人作品集后端API
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@example.com
+
+servers:
+  - url: http://localhost:8080
+    description: 本地开发环境
+
+tags:
+  - name: profile
+    description: 个人简介相关操作
+  - name: project
+    description: 项目作品相关操作
+  - name: settings
+    description: 网站设置相关操作
+
+paths:
+  /api/profile/{id}:
+    get:
+      tags:
+        - profile
+      summary: 获取个人简介
+      description: 根据ID获取个人简介信息
+      operationId: getProfileById
+      parameters:
+        - name: id
+          in: path
+          description: 个人简介ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 成功获取个人简介
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        '404':
+          description: 未找到指定ID的个人简介
+        '500':
+          description: 服务器内部错误
+
+  /api/profile:
+    post:
+      tags:
+        - profile
+      summary: 更新个人简介
+      description: 更新个人简介信息
+      operationId: updateProfile
+      requestBody:
+        description: 个人简介对象
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile'
+        required: true
+      responses:
+        '200':
+          description: 成功更新个人简介
+        '400':
+          description: 请求参数错误
+        '500':
+          description: 服务器内部错误
+
+  /api/projects:
+    get:
+      tags:
+        - project
+      summary: 获取所有项目
+      description: 获取所有项目列表
+      operationId: getAllProjects
+      responses:
+        '200':
+          description: 成功获取项目列表
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+        '500':
+          description: 服务器内部错误
+    
+    post:
+      tags:
+        - project
+      summary: 创建新项目
+      description: 创建一个新的项目
+      operationId: createProject
+      requestBody:
+        description: 项目对象
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+        required: true
+      responses:
+        '200':
+          description: 成功创建项目
+          content:
+            application/json:
+              schema:
+                type: boolean
+        '400':
+          description: 请求参数错误
+        '500':
+          description: 服务器内部错误
+
+  /api/projects/{id}:
+    get:
+      tags:
+        - project
+      summary: 获取项目详情
+      description: 根据ID获取项目详情
+      operationId: getProjectById
+      parameters:
+        - name: id
+          in: path
+          description: 项目ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 成功获取项目详情
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '404':
+          description: 未找到指定ID的项目
+        '500':
+          description: 服务器内部错误
+
+    put:
+      tags:
+        - project
+      summary: 更新项目
+      description: 更新指定ID的项目
+      operationId: updateProject
+      parameters:
+        - name: id
+          in: path
+          description: 项目ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: 项目对象
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+        required: true
+      responses:
+        '200':
+          description: 成功更新项目
+          content:
+            application/json:
+              schema:
+                type: boolean
+        '400':
+          description: 请求参数错误
+        '404':
+          description: 未找到指定ID的项目
+        '500':
+          description: 服务器内部错误
+
+    delete:
+      tags:
+        - project
+      summary: 删除项目
+      description: 删除指定ID的项目
+      operationId: deleteProject
+      parameters:
+        - name: id
+          in: path
+          description: 项目ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 成功删除项目
+          content:
+            application/json:
+              schema:
+                type: boolean
+        '404':
+          description: 未找到指定ID的项目
+        '500':
+          description: 服务器内部错误
+
+  /api/settings/{id}:
+    get:
+      tags:
+        - settings
+      summary: 获取设置
+      description: 根据ID获取设置
+      operationId: getSettingsById
+      parameters:
+        - name: id
+          in: path
+          description: 设置ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 成功获取设置
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settings'
+        '404':
+          description: 未找到指定ID的设置
+        '500':
+          description: 服务器内部错误
+
+  /api/settings:
+    post:
+      tags:
+        - settings
+      summary: 创建设置
+      description: 创建新的设置
+      operationId: createSettings
+      requestBody:
+        description: 设置对象
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Settings'
+        required: true
+      responses:
+        '200':
+          description: 成功创建设置
+          content:
+            application/json:
+              schema:
+                type: boolean
+        '400':
+          description: 请求参数错误
+        '500':
+          description: 服务器内部错误
+
+  /api/settings/{id}:
+    put:
+      tags:
+        - settings
+      summary: 更新设置
+      description: 更新指定ID的设置
+      operationId: updateSettings
+      parameters:
+        - name: id
+          in: path
+          description: 设置ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: 设置对象
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Settings'
+        required: true
+      responses:
+        '200':
+          description: 成功更新设置
+          content:
+            application/json:
+              schema:
+                type: boolean
+        '400':
+          description: 请求参数错误
+        '404':
+          description: 未找到指定ID的设置
+        '500':
+          description: 服务器内部错误
+
+components:
+  schemas:
+    Profile:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: 个人简介ID
+        name:
+          type: string
+          description: 姓名
+        title:
+          type: string
+          description: 职位标题
+        subtitle:
+          type: string
+          description: 副标题
+        availability:
+          type: string
+          description: 可用性状态
+        coffeeText:
+          type: string
+          description: 咖啡约见文本
+        skills:
+          type: string
+          description: 技能列表
+        qualities:
+          type: string
+          description: 个人品质
+        contact:
+          type: string
+          description: 联系信息（JSON格式）
+        social:
+          type: string
+          description: 社交媒体链接（JSON格式）
+      required:
+        - name
+
+    Project:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: 项目ID
+        title:
+          type: string
+          description: 项目标题
+        description:
+          type: string
+          description: 项目描述
+        technologies:
+          type: string
+          description: 使用的技术
+        thumbnailUrl:
+          type: string
+          description: 缩略图URL
+        demoUrl:
+          type: string
+          description: 演示URL
+        codeUrl:
+          type: string
+          description: 代码仓库URL
+      required:
+        - title
+
+    Settings:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: 设置ID
+        theme:
+          type: string
+          description: 主题
+        language:
+          type: string
+          description: 语言
+        darkMode:
+          type: boolean
+          description: 暗黑模式
+        fontFamily:
+          type: string
+          description: 字体
+        fontSize:
+          type: integer
+          description: 字体大小 

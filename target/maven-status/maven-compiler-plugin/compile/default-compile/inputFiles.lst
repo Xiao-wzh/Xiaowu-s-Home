@@ -1,0 +1,10 @@
+/home/devbox/project/src/main/java/com/portfolio/PortfolioApplication.java
+/home/devbox/project/src/main/java/com/portfolio/controller/ProfileController.java
+/home/devbox/project/src/main/java/com/portfolio/entity/Profile.java
+/home/devbox/project/src/main/java/com/portfolio/entity/Project.java
+/home/devbox/project/src/main/java/com/portfolio/entity/Settings.java
+/home/devbox/project/src/main/java/com/portfolio/mapper/ProfileMapper.java
+/home/devbox/project/src/main/java/com/portfolio/mapper/ProjectMapper.java
+/home/devbox/project/src/main/java/com/portfolio/mapper/SettingsMapper.java
+/home/devbox/project/src/main/java/com/portfolio/service/ProfileService.java
+/home/devbox/project/src/main/java/com/portfolio/service/impl/ProfileServiceImpl.java

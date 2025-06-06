@@ -1,0 +1,10 @@
+com/portfolio/entity/Project.class
+com/portfolio/entity/Settings.class
+com/portfolio/controller/ProfileController.class
+com/portfolio/PortfolioApplication.class
+com/portfolio/mapper/ProjectMapper.class
+com/portfolio/mapper/ProfileMapper.class
+com/portfolio/mapper/SettingsMapper.class
+com/portfolio/entity/Profile.class
+com/portfolio/service/ProfileService.class
+com/portfolio/service/impl/ProfileServiceImpl.class
